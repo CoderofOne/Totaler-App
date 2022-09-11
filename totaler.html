@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totaler</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 4px 10px;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+    #calc {
+      background: green;
+      color: white;
+      border: none;
+    }
+    #calc:hover {
+      background: darkgreen;
+    }
+    #reset {
+      background: red;
+      color: white;
+      border: none;
+    }
+    #reset:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <form name="totaler" method="post">
+    <fieldset>
+      <legend><strong>Calculate Total</strong></legend>
+
+      <label for="num1"><strong>Sub Total:</strong></label>
+      <span>$</span>
+      <input type="text" name="num1" id="subTotal">
+      
+      <span>+</span>
+      
+      <label for="num2"><strong>Shipping & Handling:</strong></label>
+      <span>$</span>
+      <input type="text" name="num2" id="shippingTotal" />
+      
+      <span>=</span>
+      
+      <label for="sum"><strong>Total:</strong></label>
+      <span>$</span>
+      <input type="text" name="sum" id="Total" readonly/><br>
+      
+      <button type="button" onclick="calculate()" id="calc">Calculate</button>
+      <button type="button" onclick="document.getElementById('subTotal').value = '',document.getElementById('shippingTotal').value = '',document.getElementById('Total').value = ''" id="reset">Reset</button>
+    </fieldset>
+  </form>
+
+  <script>
+      function calculate() {    
+            var num1 = document.getElementById('subTotal').value;
+            var num2 = document.getElementById('shippingTotal').value;
+			      var result = (parseFloat(num1) + parseFloat(num2));
+            
+            if (!isNaN(result)) {
+                document.getElementById('Total').value = parseFloat(result);
+            }
+        }
+  </script>
+</body>
+</html>
